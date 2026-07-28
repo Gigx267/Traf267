@@ -40,9 +40,10 @@
         a { color: inherit; text-decoration: none; }
 
         .container {
+            width: 100%;
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
         }
 
         .section-tag {
@@ -56,7 +57,7 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 800;
             line-height: 1.2;
             letter-spacing: -0.5px;
@@ -65,16 +66,17 @@
 
         .section-subtitle {
             color: var(--text-secondary);
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
             max-width: 650px;
         }
 
-        /* header */
+        /* HEADER & NAVIGATION */
         header {
             position: sticky;
             top: 0;
             background-color: rgba(7, 10, 17, 0.85);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-subtle);
             z-index: 1000;
         }
@@ -83,16 +85,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 90px;
+            height: 80px;
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
             font-weight: 800;
             letter-spacing: 2px;
             display: flex;
             align-items: center;
             gap: 8px;
+            z-index: 1001;
         }
 
         .logo span { color: var(--accent-gold); }
@@ -111,7 +114,8 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -124,6 +128,12 @@
         .nav-links a:hover,
         .nav-links a.active {
             color: var(--accent-gold);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .btn {
@@ -139,6 +149,7 @@
             transition: var(--transition);
             cursor: pointer;
             border: none;
+            white-space: nowrap;
         }
 
         .btn-primary {
@@ -152,27 +163,52 @@
             box-shadow: 0 10px 20px -5px rgba(229, 184, 73, 0.4);
         }
 
-        .btn-outline {
+        /* Mobile Menu Toggle Button */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 28px;
+            height: 20px;
             background: transparent;
-            border: 1px solid var(--border-subtle);
-            color: var(--text-primary);
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 0;
         }
 
-        .btn-outline:hover {
-            border-color: var(--accent-gold);
-            color: var(--accent-gold);
+        .mobile-toggle span {
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-primary);
+            border-radius: 2px;
+            transition: var(--transition);
         }
 
-        /* page hero */
+        .mobile-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+            background-color: var(--accent-gold);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+            background-color: var(--accent-gold);
+        }
+
+        /* PAGE HERO */
         .page-hero {
-            padding: 5rem 0 4rem 0;
+            padding: clamp(3rem, 8vw, 5rem) 0;
             background: linear-gradient(180deg, rgba(7,10,17,0.7) 0%, var(--bg-dark) 100%),
                         url('./pexels-pixabay-257700-2048x1365.jpg') no-repeat center center/cover;
             border-bottom: 1px solid var(--border-subtle);
         }
 
         .page-hero h1 {
-            font-size: 3.2rem;
+            font-size: clamp(2.2rem, 5vw, 3.2rem);
             font-weight: 800;
             letter-spacing: -1px;
         }
@@ -184,15 +220,19 @@
         }
 
         .page-hero p {
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2vw, 1.2rem);
             color: var(--text-secondary);
             max-width: 750px;
             margin-top: 1rem;
         }
 
-        /* fuel supply section */
+        /* SECTIONS COMMON */
+        section {
+            padding: clamp(3rem, 6vw, 5rem) 0;
+        }
+
+        /* FUEL SUPPLY */
         .fuel-supply {
-            padding: 5rem 0;
             background-color: var(--bg-surface);
             border-bottom: 1px solid var(--border-subtle);
         }
@@ -200,7 +240,7 @@
         .fuel-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: clamp(2rem, 5vw, 4rem);
             align-items: center;
         }
 
@@ -230,26 +270,25 @@
             background: var(--bg-card);
             border: 1px solid var(--border-highlight);
             border-radius: var(--radius-md);
-            padding: 2rem;
+            padding: 1.5rem;
             margin-top: 2rem;
         }
 
         .storage-badge strong {
             color: var(--accent-gold);
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
 
-        /* drilling services */
+        /* DRILLING SERVICES */
         .drilling-services {
-            padding: 5rem 0;
             background-color: var(--bg-dark);
             border-bottom: 1px solid var(--border-subtle);
         }
 
         .drilling-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
             margin-top: 2.5rem;
         }
 
@@ -257,7 +296,7 @@
             background: var(--bg-card);
             border: 1px solid var(--border-subtle);
             border-radius: var(--radius-lg);
-            padding: 2.5rem;
+            padding: clamp(1.5rem, 4vw, 2.5rem);
             transition: var(--transition);
         }
 
@@ -267,7 +306,7 @@
         }
 
         .drill-card h3 {
-            font-size: 1.6rem;
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
             margin-bottom: 0.5rem;
         }
 
@@ -286,7 +325,7 @@
 
         .drill-features li {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
             color: var(--text-secondary);
         }
@@ -297,9 +336,8 @@
             font-weight: 700;
         }
 
-        /* solutions / tank storage */
+        /* SOLUTIONS / TANK STORAGE */
         .solutions-section {
-            padding: 5rem 0;
             background-color: var(--bg-surface);
             border-bottom: 1px solid var(--border-subtle);
         }
@@ -307,7 +345,7 @@
         .solutions-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: clamp(2rem, 5vw, 4rem);
             align-items: center;
         }
 
@@ -315,12 +353,12 @@
             background: var(--bg-card);
             border: 1px solid var(--border-highlight);
             border-radius: var(--radius-lg);
-            padding: 3rem;
+            padding: clamp(2rem, 5vw, 3rem);
             text-align: center;
         }
 
         .solutions-highlight .big-number {
-            font-size: 3.2rem;
+            font-size: clamp(2.5rem, 6vw, 3.2rem);
             font-weight: 800;
             color: var(--accent-gold);
             line-height: 1.2;
@@ -330,7 +368,7 @@
             margin-top: 1.5rem;
             background: var(--bg-dark);
             border-radius: var(--radius-md);
-            padding: 1.5rem;
+            padding: 1.25rem;
             border: 1px solid var(--border-subtle);
         }
 
@@ -339,31 +377,38 @@
             font-size: 0.95rem;
         }
 
-        /* discipline list (wide) */
+        /* DISCIPLINE LIST */
+        .discipline-section {
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
         .discipline-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.8rem 2rem;
+            gap: 1rem 2rem;
             list-style: none;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .discipline-grid li {
             display: flex;
-            align-items: center;
-            gap: 8px;
+            align-items: flex-start;
+            gap: 10px;
             color: var(--text-secondary);
+            font-size: 0.95rem;
         }
 
         .discipline-grid li::before {
             content: "◆";
             color: var(--accent-gold);
-            font-size: 0.8rem;
+            font-size: 0.7rem;
+            margin-top: 3px;
+            flex-shrink: 0;
         }
 
-        /* cta */
+        /* CTA */
         .cta-section {
-            padding: 4rem 0;
             background-color: var(--bg-dark);
             text-align: center;
             border-bottom: 1px solid var(--border-subtle);
@@ -373,11 +418,11 @@
             margin-top: 1.5rem;
         }
 
-        /* footer */
+        /* FOOTER */
         footer {
             background-color: var(--bg-dark);
             border-top: 1px solid var(--border-subtle);
-            padding: 5rem 0 2rem 0;
+            padding: clamp(3rem, 6vw, 5rem) 0 2rem 0;
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
@@ -385,14 +430,15 @@
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
+            gap: 3rem;
+            margin-bottom: 3rem;
         }
 
         .footer-brand p { margin-top: 1rem; max-width: 350px; }
         .footer-title { color: var(--text-primary); font-weight: 700; margin-bottom: 1.25rem; }
         .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
         .footer-links a:hover { color: var(--accent-gold); }
+        
         .footer-bottom {
             border-top: 1px solid var(--border-subtle);
             padding-top: 2rem;
@@ -400,18 +446,92 @@
             justify-content: space-between;
             align-items: center;
             font-size: 0.8rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
+        /* --- MOBILE & TABLET MEDIA QUERIES --- */
         @media (max-width: 992px) {
-            .fuel-grid, .drilling-grid, .solutions-wrapper { grid-template-columns: 1fr; }
-            .page-hero h1 { font-size: 2.6rem; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .discipline-grid { grid-template-columns: 1fr; }
+            .fuel-grid, 
+            .solutions-wrapper { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .footer-grid { 
+                grid-template-columns: 1fr 1fr; 
+                gap: 2.5rem; 
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+            }
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .fuel-list { grid-template-columns: 1fr; }
+            .nav-container {
+                height: 70px;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 320px;
+                height: 100vh;
+                background-color: var(--bg-surface);
+                border-left: 1px solid var(--border-subtle);
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: 3rem 2rem;
+                gap: 1.8rem;
+                transition: var(--transition);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+            }
+
+            .header-btn {
+                display: none;
+            }
+
+            .discipline-grid { 
+                grid-template-columns: 1fr; 
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1.25rem;
+            }
+
+            .fuel-list { 
+                grid-template-columns: 1fr; 
+            }
+
+            .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -420,26 +540,30 @@
     <!-- NAVIGATION -->
     <header>
         <div class="container nav-container">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 TRAFE <span>INC.</span>
                 <span class="logo-tag">Global</span>
-            </div>
-            <ul class="nav-links">
-                 <li><a href="index.html">Home </a></li>
+            </a>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About Us</a></li>
-                <li><a href="whatwedo.html">What We Do</a></li>
+                <li><a href="whatwedo.html" class="active">What We Do</a></li>
                 <li><a href="Team.html">Leadership</a></li>
-                 
-                  <li><a href="Trackrecord.html">Track Record</a></li>
+                <li><a href="Trackrecord.html">Track Record</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            </ul>
-            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Initiate Inquiry</button>
+
+            <div class="nav-right">
+                <button class="btn btn-primary header-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Initiate Inquiry</button>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
     </header>
-
-    <!-- PAGE HERO -->
-    
 
     <!-- FUEL SUPPLY -->
     <section class="fuel-supply" id="fuel">
@@ -449,9 +573,8 @@
                     <span class="section-tag">Bulk fuel & crude</span>
                     <h2 class="section-title">Fuel Supply</h2>
                     <p style="color: var(--text-secondary); margin-bottom: 1rem;">
-                        Trafe, with our EPC background, have successfully established ourselves as a key Fuel Supply company to various regions of the world. We supply bulk fuel originating from <strong style="color: var(--text-primary);">America, Oman, Europe, Kazakhstan,</strong>.
+                        Trafe, with our EPC background, have successfully established ourselves as a key Fuel Supply company to various regions of the world. We supply bulk fuel originating from <strong style="color: var(--text-primary);">America, Oman, Europe, Kazakhstan</strong>.
                     </p>
-                    </div>
                 </div>
                 <div>
                     <h3 style="font-size: 1.2rem; color: var(--accent-gold); margin-bottom: 0.5rem;">Products we supply</h3>
@@ -528,8 +651,8 @@
                 <div class="solutions-highlight">
                     <div class="big-number">100M BBL</div>
                     <p style="color: var(--text-secondary); margin: 0.5rem 0 1rem 0;">current storage capacity</p>
-                    <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-                        <span style="background: var(--bg-dark); padding: 0.3rem 1rem; border-radius: 30px; border: 1px solid var(--border-subtle);">GLOBALLY</span>
+                    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <span style="background: var(--bg-dark); padding: 0.4rem 1.2rem; border-radius: 30px; border: 1px solid var(--border-subtle); font-size: 0.85rem;">GLOBALLY</span>
                     </div>
                     <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-secondary);">
                         <span style="color: var(--accent-gold);">✓</span> Crude & refined products<br>
@@ -540,8 +663,8 @@
         </div>
     </section>
 
-    <!-- FULL DISCIPLINE LIST (expanded) -->
-    <section style="padding: 5rem 0; background-color: var(--bg-dark); border-bottom: 1px solid var(--border-subtle);">
+    <!-- FULL DISCIPLINE LIST -->
+    <section class="discipline-section">
         <div class="container">
             <div style="text-align: center; margin-bottom: 2.5rem;">
                 <span class="section-tag">Complete technical capabilities</span>
@@ -568,8 +691,6 @@
         </div>
     </section>
 
-    <!-- CTA -->
-    
     <!-- FOOTER -->
     <footer>
         <div class="container">
@@ -596,5 +717,31 @@
         </div>
     </footer>
 
+    <!-- MOBILE MENU SCRIPT -->
+    <script>
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileToggle.addEventListener('click', () => {
+            mobileToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+                mobileToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
