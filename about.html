@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Trafe Inc. – Global Crude & Petroleum Supply + Drilling</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- design tokens (matching homepage) --- */
+        :root {
+            --bg-dark: #070A11;
+            --bg-surface: #0E1422;
+            --bg-card: #151D30;
+            --accent-gold: #E5B849;
+            --accent-gold-hover: #f3cb67;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(229, 184, 73, 0.3);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-tag {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 650px;
+        }
+
+        /* header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(7, 10, 17, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span { color: var(--accent-gold); }
+
+        .logo-tag {
+            font-size: 0.65rem;
+            background: rgba(229, 184, 73, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.6rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(229, 184, 73, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* ----- about hero (main message) ----- */
+        .about-hero {
+            padding: 5rem 0 4rem 0;
+            background: linear-gradient(180deg, rgba(7,10,17,0.7) 0%, var(--bg-dark) 100%),
+                        url('./pexels-pixabay-257700-2048x1365.jpg ') no-repeat center center/cover;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .about-hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .about-hero h1 span {
+            background: linear-gradient(90deg, #FFFFFF, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .about-hero .lead {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-top: 1rem;
+        }
+
+        /* global offices */
+        .offices-bar {
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .offices-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .office-tag {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .office-tag::before {
+            content: "●";
+            color: var(--accent-gold);
+            font-size: 0.7rem;
+        }
+
+        /* ---- core message (the brief) ---- */
+        .core-message {
+            padding: 5rem 0;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .core-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .core-quote {
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+        }
+
+        .core-quote .big-quote {
+            font-size: 3rem;
+            line-height: 0.8;
+            color: var(--accent-gold);
+            opacity: 0.6;
+        }
+
+        .core-quote p {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin: 1rem 0;
+        }
+
+        .core-quote .source {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .core-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .core-list li {
+            display: flex;
+            gap: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .core-list li strong {
+            color: var(--text-primary);
+        }
+
+        .core-list li::before {
+            content: "◆";
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            line-height: 1.4;
+        }
+
+        /* ---- drilling & supply divisions ---- */
+        .divisions-about {
+            padding: 5rem 0;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .division-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .div-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .div-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-4px);
+        }
+
+        .div-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .div-card .sub {
+            color: var(--accent-gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        .div-card p {
+            color: var(--text-secondary);
+            margin: 1rem 0 1.2rem 0;
+        }
+
+        .div-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .div-card ul li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+        }
+
+        .div-card ul li::before {
+            content: "✓";
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        /* ----- cta / contact ----- */
+        .cta-section {
+            padding: 5rem 0;
+            background-color: var(--bg-surface);
+            text-align: center;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .cta-section .btn {
+            margin-top: 1.5rem;
+        }
+
+        /* footer */
+        footer {
+            background-color: var(--bg-dark);
+            border-top: 1px solid var(--border-subtle);
+            padding: 5rem 0 2rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p { margin-top: 1rem; max-width: 350px; }
+        .footer-title { color: var(--text-primary); font-weight: 700; margin-bottom: 1.25rem; }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+        .footer-links a:hover { color: var(--accent-gold); }
+        .footer-bottom {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        /* responsive */
+        @media (max-width: 992px) {
+            .core-grid, .division-cards { grid-template-columns: 1fr; }
+            .about-hero h1 { font-size: 2.6rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                TRAFE <span>INC.</span>
+                <span class="logo-tag">Global</span>
+            </div>
+            <ul class="nav-links">
+                <ul class="nav-links">
+                 <li><a href="index.html">Home </a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="whatwedo.html">What We Do</a></li>
+                <li><a href="Team.html">Leadership</a></li>
+                 
+                  <li><a href="Trackrecord.html">Track Record</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            </ul>
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Initiate Inquiry</button>
+        </div>
+    </header>
+
+    <!-- ABOUT HERO : main message -->
+    <section class="about-hero">
+        <div class="container">
+            <span class="section-tag">About Trafe Inc.</span>
+            <h1>International <span>Crude & Petroleum</span> Supply · Drilling Services</h1>
+            <p class="lead">
+                Trafe is an international Crude & Petroleum Product Supply company with integrated Drilling services, operating worldwide </strong>.
+            </p>
+            <p class="lead" style="margin-top: 0.5rem; font-size: 1.05rem;">
+                Our Group is a forward-thinking organization that makes a difference by <strong>“Developing and implementing innovative solutions to the world’s most complex challenges.”</strong>
+            </p>
+
+            <!-- global offices -->
+            <div class="offices-bar">
+            
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE MESSAGE : pioneering spirit + ethos -->
+    <section class="core-message">˙
+        <div class="container">
+            <div class="core-grid">
+                <div>
+                    <span class="section-tag">Our ethos</span>
+                    <h2 class="section-title">Pioneering spirit, superior solutions</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        We believe our pioneering spirit delivers superior solutions for our clients. We are <strong>dynamic, brave and purposeful</strong> — breaking through barriers and charting new ground, genuinely making a difference, but always with a conscience.
+                    </p>
+                    <ul class="core-list">
+                        <li><strong>Create opportunities</strong> where others have not</li>
+                        <li><strong>Search for sustainable solutions</strong> where others cannot</li>
+                        <li><strong>Develop revenue-generating solutions</strong> to common and complex industry challenges</li>
+                    </ul>
+                </div>
+                <div class="core-quote">
+                    <div class="big-quote">“</div>
+                    <p>Developing and implementing innovative solutions to the world’s most complex challenges.</p>
+                    <div class="source">— Trafe Group philosophy</div>
+                    <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-subtle); padding-top: 1.5rem; color: var(--text-secondary);">
+                        <span style="color: var(--accent-gold);">✓</span> EPC contractor with Crude &amp; Petroleum Product Supply division<br>
+                        <span style="color: var(--accent-gold);">✓</span> Fast-growing worldwide client base<br>
+                        <span style="color: var(--accent-gold);">✓</span> Specialized in a full range of drilling services
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRILLING & SUPPLY DIVISIONS (expanded) -->
+    <section class="divisions-about">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <span class="section-tag">Integrated services</span>
+                <h2 class="section-title">Crude supply · Drilling · EPC</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">An EPC contractor with a full-range drilling division and global crude & petroleum product supply capabilities.</p>
+            </div>
+
+            <div class="division-cards">
+                <div class="div-card">
+                    <span class="sub">Crude & Petroleum Product Supply</span>
+                    <h3>Global energy allocation</h3>
+                    <p>We supply bulk crude and refined products from primary sources worldwide. Our storage facility in Sohar Port, Oman and Europe (50M BBL) ensures reliable delivery.</p>
+                    <ul>
+                        <li>Crude Oil · EN590 · Gasoil (10/50/500 PPM)</li>
+                        <li>Gasoline all grades · A1 Jet Fuel · D2 · LPG</li>
+                        <li>Direct allocations </li>
+                    </ul>
+                </div>
+
+                <div class="div-card">
+                    <span class="sub">Drilling Service Partner</span>
+                    <h3>Tailor-made drilling teams & overhaul</h3>
+                    <p>We provide tailor-made drilling teams, full overhaul, spare parts and certifications for your drilling equipment. Our staff is motivated, well trained, certified and ready for any job.</p>
+                    <ul>
+                        <li>Complete drilling crews & technical support</li>
+                        <li>Equipment overhaul & OEM spare parts</li>
+                        <li>Certifications & compliance (onshore / offshore)</li>
+                        <li><strong style="color: var(--accent-gold);">“Your problem is our GOAL”</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- --- GLOBAL TRACK RECORD --- -->
+<section class="track-record" style="padding: 6rem 0; background: var(--bg-dark); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <span class="section-tag">Performance Metrics</span>
+            <h2 class="section-title">A Track Record of Global Delivery</h2>
+            <p class="section-subtitle" style="margin: 0 auto;">Our numbers reflect the trust placed in us by clients across the energy sector.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; text-align: center;">
+            <div style="background: var(--bg-card); padding: 2.5rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                <div style="font-size: 3rem; font-weight: 800; color: var(--accent-gold);">50+</div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Countries Served</div>
+            </div>
+            <div style="background: var(--bg-card); padding: 2.5rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                <div style="font-size: 3rem; font-weight: 800; color: var(--accent-gold);">20+</div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Global Partners</div>
+            </div>
+            <div style="background: var(--bg-card); padding: 2.5rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                <div style="font-size: 3rem; font-weight: 800; color: var(--accent-gold);">500M+</div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Barrels Delivered</div>
+            </div>
+            <div style="background: var(--bg-card); padding: 2.5rem 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+                <div style="font-size: 3rem; font-weight: 800; color: var(--accent-gold);">100%</div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Compliance Record</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- --- PARTNERSHIPS --- -->
+<section style="padding: 6rem 0; background: var(--bg-dark);">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 3rem;">
+            <span class="section-tag">Global Network</span>
+            <h2 class="section-title">Strategic Alliances</h2>
+            <p class="section-subtitle" style="margin: 0 auto;">We collaborate with premier operators and national entities across the supply chain.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 2.5rem; align-items: center; opacity: 0.7;">
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem 2rem; font-weight: 600; color: var(--text-primary);">PDO (Oman)</div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem 2rem; font-weight: 600; color: var(--text-primary);">Shell (Global)</div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem 2rem; font-weight: 600; color: var(--text-primary);">KMG</div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem 2rem; font-weight: 600; color: var(--text-primary);">ExxonMobil</div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 1rem 2rem; font-weight: 600; color: var(--text-primary);">VLO</div>
+        </div>
+        </div>
+    </div>
+</section>
+    <!-- quick CTA / contact -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <span class="section-tag">Connect</span>
+            <h2 class="section-title" style="max-width: 700px; margin: 0 auto 0.5rem auto;">Ready to partner with Trafe?</h2>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                Whether you need crude allocation, drilling crews, or EPC solutions — our global team is ready to respond.
+            </p>
+            <button class="btn btn-primary" onclick="alert('Inquiry form – we will respond within 24 hours.')">Initiate Corporate Request</button>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">TRAFE <span>INC.</span></div>
+                    <p>International Crude & Petroleum Product Supply and Drilling Services EPC Contractor.</p>
+                </div>
+                <div></div>
+                <div>
+                    <div class="footer-title">Divisions</div>
+                    <ul class="footer-links">
+                        <li><a href="whatwedo.html">Petroleum Allocations</a></li>
+                        <li><a href="whatwedo.html">Drilling Operations</a></li>
+                        <li><a href="whatwedo.html">Equipment Overhaul</a></li>
+                        <li><a href="whatwedo.html">Corporate Ethos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Trafe Inc. All Rights Reserved.</p>
+                <p>"Your problem is our challenge!"</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

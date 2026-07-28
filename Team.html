@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leadership Team | Trafe Inc.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- DESIGN SYSTEM & DESIGN TOKENS (MATCHES MAIN SITE) --- */
+        :root {
+            --bg-dark: #070A11;
+            --bg-surface: #0E1422;
+            --bg-card: #151D30;
+            --accent-gold: #E5B849;
+            --accent-gold-hover: #f3cb67;
+            --accent-cyan: #38BDF8;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(229, 184, 73, 0.3);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- TYPOGRAPHY UTILITIES --- */
+        .section-tag {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 650px;
+        }
+
+        /* --- NAVIGATION (MATCHES MAIN SITE) --- */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(7, 10, 17, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        .logo-tag {
+            font-size: 0.65rem;
+            background: rgba(229, 184, 73, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.6rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(229, 184, 73, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* --- PAGE HERO BANNER --- */
+        .page-hero {
+            padding: 8rem 0 5rem 0;
+            background: linear-gradient(180deg, rgba(7,10,17,0.4) 0%, rgba(7,10,17,1) 100%),
+                        url('./pexels-pixabay-257700-2048x1365.jpg') no-repeat center center/cover;
+            border-bottom: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+
+        .page-hero .hero-tagline {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero h1 span {
+            background: linear-gradient(90deg, #FFFFFF, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-hero p {
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+        }
+
+        /* --- TEAM SECTIONS --- */
+        .team-section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid var(--border-subtle);
+            padding-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .section-title::before {
+            content: "";
+            display: inline-block;
+            width: 4px;
+            height: 28px;
+            background-color: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+
+        /* Team Cards */
+        .member-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .member-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-highlight);
+            box-shadow: var(--shadow-card);
+        }
+
+        /* CEO Card - Featured */
+        .member-card.featured {
+            border-color: var(--accent-gold);
+            background: linear-gradient(145deg, var(--bg-card), var(--bg-surface));
+        }
+
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--bg-dark);
+            border: 2px solid var(--accent-gold);
+            margin-bottom: 1.25rem;
+            background-size: cover;
+            background-position: center;
+            flex-shrink: 0;
+        }
+
+        /* Individual avatar images — now all members have real photos */
+        .member-avatar.ceo-avatar {
+            background-image: url('./b1.png');
+        }
+        .member-avatar.coo-avatar {
+            background-image: url('./p2.png');
+        }
+        .member-avatar.legal-avatar {
+            background-image: url('./p3.png');
+        }
+        .member-avatar.sales-avatar {
+            background-image: url('./Mike.jeg.jpeg');
+        }
+        .member-avatar.advisory-1 {
+            background-image: url('https://i.pravatar.cc/300?img=55');
+        }
+        .member-avatar.advisory-2 {
+            background-image: url('https://i.pravatar.cc/300?img=45');
+        }
+        .member-avatar.advisory-3 {
+            background-image: url('https://i.pravatar.cc/300?img=29');
+        }
+
+        .member-header {
+            margin-bottom: 1rem;
+        }
+
+        .member-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.15rem;
+        }
+
+        .member-role {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .member-bio {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            flex-grow: 1;
+        }
+
+        .member-highlights {
+            margin-top: 1.5rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(229, 184, 73, 0.08);
+            color: var(--accent-gold);
+            border: 1px solid rgba(229, 184, 73, 0.2);
+            font-size: 0.7rem;
+            padding: 0.25rem 0.8rem;
+            border-radius: 50px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* --- ADVISORY BOARD SECTION --- */
+        .advisory-section {
+            padding: 6rem 0;
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        /* --- FOOTER (MATCHES MAIN SITE) --- */
+        footer {
+            background-color: var(--bg-dark);
+            border-top: 1px solid var(--border-subtle);
+            padding: 5rem 0 2rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1rem;
+            max-width: 350px;
+        }
+
+        .footer-title {
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .page-hero h1 { font-size: 2.8rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .page-hero { padding: 6rem 0 3rem 0; }
+            .page-hero h1 { font-size: 2.2rem; }
+            .member-card { padding: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR (MATCHES MAIN SITE) -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                TRAFE <span>INC.</span>
+                <span class="logo-tag">Global</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home </a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="whatwedo.html">What We Do</a></li>
+                <li><a href="Team.html" class="active">Leadership</a></li>
+                <li><a href="Trackrecord.html">Track Record</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="btn btn-primary" onclick="window.location.href='contact.html';">Initiate Inquiry</button>
+        </div>
+    </header>
+
+    <!-- TEAM CONTENT -->
+    <main class="container team-section">
+
+        <!-- EXECUTIVE LEADERSHIP -->
+        <h2 class="section-title">Executive Officers</h2>
+        <div class="grid-2" style="margin-bottom: 4rem;">
+
+            <!-- CEO - Featured -->
+            <div class="member-card featured">
+                <div>
+                    <div class="member-avatar ceo-avatar"></div>
+                    <div class="member-header">
+                        <h3 class="member-name">Michael C. Fokker</h3>
+                        <div class="member-role">CEO, Founder &amp; President of the Board</div>
+                    </div>
+                    <p class="member-bio">
+                        An AAA accountant specialist in International Financing with over 40 years of experience across financial and juridical fields. Leveraging extensive knowledge of leading international enterprises, he has participated in numerous diplomatic trade missions for both the United States and Netherlands governments. Late member of the historic Fokker Family.
+                    </p>
+                </div>
+                <div class="member-highlights">
+                    <span class="tag">International Financing</span>
+                    <span class="tag">40+ Yrs Experience</span>
+                    <span class="tag">Trade Missions</span>
+                    <span class="tag">Fokker Family</span>
+                </div>
+            </div>
+
+            <!-- COO -->
+            <div class="member-card">
+                <div>
+                    <div class="member-avatar coo-avatar"></div>
+                    <div class="member-header">
+                        <h3 class="member-name">Bouda Kirroh</h3>
+                        <div class="member-role">Chief Operating Officer (COO)</div>
+                    </div>
+                    <p class="member-bio">
+                        Bouda brings over 20 years of operational experience within major corporations in the Marine, Oil &amp; Gas, and Drilling Equipment sectors worldwide. Having held key technical and executive management roles globally, he demonstrates a proven track record in international trade, development, and heavy industry operations with multiple specialized sector certifications.
+                    </p>
+                </div>
+                <div class="member-highlights">
+                    <span class="tag">Marine &amp; Off-Shore</span>
+                    <span class="tag">Oil &amp; Gas Drilling</span>
+                    <span class="tag">Global Operations</span>
+                    <span class="tag">20+ Yrs Experience</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- MEMBERS OF THE BOARD -->
+        <h2 class="section-title">Members of the Board</h2>
+        <div class="grid-2">
+
+            <!-- Head of Legal -->
+            <div class="member-card">
+                <div>
+                    <div class="member-avatar legal-avatar"></div>
+                    <div class="member-header">
+                        <h3 class="member-name">Nicole Weinstock</h3>
+                        <div class="member-role">Head of Legal &amp; Director Int'l Business</div>
+                    </div>
+                    <p class="member-bio">
+                        Ms. Nicole leads the legal division, overseeing all cross-border contracts, structured trade rights, and risk management protocols. Specializing in International Tax Law, she completed her post-graduate work at the prestigious Mannheim Business School. She drives legal compliance centered on straightforward principles, transparency, and integrity.
+                    </p>
+                </div>
+                <div class="member-highlights">
+                    <span class="tag">International Tax Law</span>
+                    <span class="tag">Contract Governance</span>
+                    <span class="tag">Mannheim Business School</span>
+                </div>
+            </div>
+
+            <!-- Sales / Marketing Director -->
+            <div class="member-card">
+                <div>
+                    <div class="member-avatar sales-avatar"></div>
+                    <div class="member-header">
+                        <h3 class="member-name">Mike Williams</h3>
+                        <div class="member-role">Sales &amp; Marketing Director, Board Member</div>
+                    </div>
+                    <p class="member-bio">
+                        With over 25 years of global energy expertise spanning both upstream and downstream domains, Mike leads worldwide sales strategies and new market acquisition for the Trafe Group of Companies. His business acumen in project acquisition and trade execution ensures institutional customer satisfaction across global supply chains.
+                    </p>
+                </div>
+                <div class="member-highlights">
+                    <span class="tag">Upstream / Downstream</span>
+                    <span class="tag">New Market Sourcing</span>
+                    <span class="tag">25+ Yrs Industry Expertise</span>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- ADVISORY BOARD SECTION -->
+   
+
+    <!-- FOOTER (MATCHES MAIN SITE) -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        TRAFE <span>INC.</span>
+                    </div>
+                    <p>International Crude &amp; Petroleum Product Supply and Drilling Services EPC Contractor.</p>
+                </div>
+                <div>
+                    <div class="footer-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="whatwedo.html">What We Do</a></li>
+                        <li><a href="Team.html">Leadership</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer-title">Divisions</div>
+                    <ul class="footer-links">
+                        <li><a href="whatwedo.html">Petroleum Allocations</a></li>
+                        <li><a href="whatwedo.html">Drilling Operations</a></li>
+                        <li><a href="whatwedo.html">Equipment Overhaul</a></li>
+                        <li><a href="whatwedo.html">Corporate Ethos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Trafe Inc. All Rights Reserved.</p>
+                <p>"Your problem is our challenge!"</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

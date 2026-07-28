@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trafe Inc. | Global Petroleum & Offshore Drilling Solutions</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- DESIGN SYSTEM & DESIGN TOKENS --- */
+        :root {
+            --bg-dark: #070A11;
+            --bg-surface: #0E1422;
+            --bg-card: #151D30;
+            --accent-gold: #E5B849;
+            --accent-gold-hover: #f3cb67;
+            --accent-cyan: #38BDF8;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(229, 184, 73, 0.3);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- TYPOGRAPHY UTILITIES --- */
+        .section-tag {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 650px;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(7, 10, 17, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        .logo-tag {
+            font-size: 0.65rem;
+            background: rgba(229, 184, 73, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.6rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(229, 184, 73, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            padding: 10rem 0 7rem 0;
+            background: linear-gradient(180deg, rgba(7,10,17,0.4) 0%, rgba(7,10,17,1) 100%), 
+                        url('./pexels-pixabay-257700-2048x1365.jpg') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -1.5px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #FFFFFF, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        /* Global Hubs Banner */
+        .hubs-bar {
+            margin-top: 5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .hubs-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .hubs-list {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hub-tag {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hub-tag::before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+        }
+
+        /* --- MISSION & ETHOS --- */
+        .ethos {
+            padding: 7rem 0;
+            background-color: var(--bg-surface);
+            position: relative;
+        }
+
+        .ethos-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .ethos-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            position: relative;
+        }
+
+        .ethos-quote {
+            font-size: 1.4rem;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .ethos-quote-mark {
+            color: var(--accent-gold);
+            font-size: 4rem;
+            line-height: 0;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .ethos-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            background: var(--bg-dark);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .feature-item h4 {
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .feature-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- CORE DIVISIONS --- */
+        .divisions {
+            padding: 8rem 0;
+        }
+
+        .division-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .division-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .division-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-highlight);
+            box-shadow: var(--shadow-card);
+        }
+
+        .division-img {
+            height: 240px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .division-img::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, var(--bg-card) 100%);
+        }
+
+        .img-petroleum {
+            background-image: url('./pexels-loic-manegarium-3855962.jpg');
+        }
+
+        .img-drilling {
+            background-image: url('./pexels-pixabay-162568-2048x1582.jpg');
+        }
+
+        .division-body {
+            padding: 2.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .division-body h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .division-subtitle {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .division-body p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .division-list {
+            list-style: none;
+            margin-top: auto;
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .division-list li {
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .division-list li::before {
+            content: "✓";
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        /* --- CEO STATEMENT SECTION --- */
+        .ceo-section {
+            padding: 8rem 0;
+            background: var(--bg-surface);
+            border-top: 1px solid var(--border-subtle);
+            border-bottom: 1px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .ceo-wrapper {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .ceo-profile {
+            text-align: center;
+        }
+
+        .ceo-avatar {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background-color: var(--bg-card);
+            border: 3px solid var(--accent-gold);
+            margin: 0 auto 1.5rem auto;
+            background-image: url('./b1.png');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 0 30px rgba(229, 184, 73, 0.2);
+        }
+
+        .ceo-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .ceo-title {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .ceo-speech {
+            position: relative;
+        }
+
+        .ceo-speech p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .ceo-highlight {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+        }
+
+        /* --- CONTACT PORTAL --- */
+        .contact-section {
+            padding: 8rem 0;
+        }
+
+        .contact-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 4rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            background: var(--bg-dark);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+            padding: 1rem;
+            border-radius: var(--radius-sm);
+            font-family: inherit;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--bg-dark);
+            border-top: 1px solid var(--border-subtle);
+            padding: 5rem 0 2rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p {
+            margin-top: 1rem;
+            max-width: 350px;
+        }
+
+        .footer-title {
+            color: var(--text-primary);
+            font-weight: 700;
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .ethos-grid, .division-grid, .ceo-wrapper { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2.8rem; }
+            .ceo-avatar { width: 180px; height: 180px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full { grid-column: span 1; }
+            .contact-box { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                TRAFE <span>INC.</span>
+                <span class="logo-tag">Global</span>
+            </div>
+            <ul class="nav-links">
+                 <li><a href="index.html">Home </a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="whatwedo.html">What We Do</a></li>
+                <li><a href="Team.html">Leadership</a></li>
+                 
+                  <li><a href="Trackrecord.html">Track Record</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Initiate Inquiry</button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="section-tag">International Petroleum & Infrastructure Contractor</span>
+                <h1>Pioneering Solutions for Complex Energy Challenges.</h1>
+                <p>Executing high-volume, secure trade transactions by connecting verified corporate 
+                    suppliers directly with competitive end-markets.
+                     Our institutional focus centers entirely on eliminating fragmented broker chains to optimize pricing 
+                     structure, heavy cargo logistics, and uncompromising legal compliance across international borders.</p>
+                <div class="hero-btns">
+
+                </div>
+            </div>
+
+            <!-- Global Hubs Banner -->
+            <div class="hubs-bar">
+                
+                 
+                  
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT / ETHOS SECTION -->
+    <section class="ethos" id="about">
+        <div class="container">
+            <div class="ethos-grid">
+                <div>
+                    <span class="section-tag">Our Foundational Ethos</span>
+                    <h2 class="section-title">Developing solutions where others cannot.</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                        We believe our pioneering spirit delivers superior solutions for our clients. We are dynamic, brave, and purposeful—breaking through barriers and charting new ground, genuinely making a difference, always with a conscience.
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        We aim to create opportunities where others have not, search for sustainable pathways where others cannot, and develop revenue-generating answers to common and complex industry challenges.
+                    </p>
+                </div>
+
+                <div class="ethos-card">
+                    <span class="ethos-quote-mark">“</span>
+                    <div class="ethos-quote">
+                        Developing and implementing innovative solutions to the world’s most complex challenges.
+                    </div>
+                    <div class="ethos-features">
+                        <div class="feature-item">
+                            <h4>Dynamic Execution</h4>
+                            <p>Fast-moving solutions for high-pressure operations.</p>
+                        </div>
+                        <div class="feature-item">
+                            <h4>Conscientious Operations</h4>
+                            <p>Sustainable value creation across all borders.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BUSINESS DIVISIONS SECTION -->
+    <section class="divisions" id="divisions">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-tag">Integrated Enterprise Services</span>
+                <h2 class="section-title">Core Business Divisions</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">An EPC contractor with a fast-growing worldwide client base, bringing deep sea resilience to onshore and offshore energy assets.</p>
+            </div>
+
+            <div class="division-grid">
+                <!-- Division 1 -->
+                <div class="division-card">
+                    <div class="division-img img-petroleum"></div>
+                    <div class="division-body">
+                        <span class="division-subtitle">Energy Allocation & Trading</span>
+                        <h3>Crude & Petroleum Product Supply</h3>
+                        <p>Leveraging deep global asset allocations and primary origins to deliver secured bulk energy products directly to worldwide markets.</p>
+                        <ul class="division-list">
+                            <li>Crude Oil Supply</li>
+                            <li>Diesel D2 & EN590</li>
+                            <li>Jet Fuel (A1 / TS-1)</li>
+                            <li>Aviation Kerosene</li>
+                            <li>Liquefied Natural Gas (LNG)</li>
+                            <li>LPG & Refined Gases</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Division 2 -->
+                <div class="division-card">
+                    <div class="division-img img-drilling"></div>
+                    <div class="division-body">
+                        <span class="division-subtitle">Offshore & Onshore Engineering</span>
+                        <h3>Drilling Services & Overhaul</h3>
+                        <p>Specialized EPC drilling contractor providing full-spectrum asset support, technical crews, and total equipment maintenance worldwide.</p>
+                        <ul class="division-list">
+                            <li>Tailor-Made Drilling Teams</li>
+                            <li>Full Equipment Overhauls</li>
+                            <li>OEM Spare Parts Supply</li>
+                            <li>Drilling Certifications</li>
+                            <li>High-Pressure Operations</li>
+                            <li>24/7 Technical On-Site Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CEO'S SPEECH SECTION -->
+    <section class="ceo-section" id="ceo">
+        <div class="container">
+            <div class="ceo-wrapper">
+                <div class="ceo-profile">
+                    <div class="ceo-avatar"></div>
+                    <div class="ceo-name">Michael Fokker</div>
+                    <div class="ceo-title">Chief Executive Officer</div>
+                </div>
+                
+                <div class="ceo-speech">
+                    <span class="section-tag">Leadership Perspective</span>
+                    <h2 class="section-title">Message from our CEO</h2>
+                    
+                    <p>
+                        The idea behind Trafe leads back more than 20 years ago where a couple of Dutch no-nonsense sailors, who had already earned their spurs in offshore operations, decided to work together worldwide to carry out the most complex assignments—alone or in a team.
+                    </p>
+                    
+                    <p>
+                        All educated and trained by intense experiences with high-pressure drilling in its most complex forms near the coast of the Netherlands and England in the dreaded North Sea. That sense of invincible seamanship is still the drive that all our employees radiate. Wherever they are. Whatever problem needs to be solved.
+                    </p>
+
+                    <div class="ceo-highlight">
+                        "Your problem is our challenge!"
+                    </div>
+
+                    <p>
+                        Now that Trafe Inc. has grown into a globally operating enterprise with a massive database of specialists for every job, we no longer see each other every day. But the feeling remains of that group of friends who see every problem of the customer as an opportunity to perform. That is what Trafe Inc. stands for today.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- --- CORE VALUES & SAFETY --- -->
+<section style="padding: 6rem 0; background: var(--bg-surface);">
+    <div class="container">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <span class="section-tag">Operational Integrity</span>
+            <h2 class="section-title">Built on Safety &amp; Reliability</h2>
+            <p class="section-subtitle" style="margin: 0 auto;">Our core values guide every decision, from the boardroom to the rig floor.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+            <div style="background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-gold);">
+                <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--accent-gold);">Safety First</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">We maintain an uncompromising commitment to HSE standards, ensuring every operation returns home safely.</p>
+            </div>
+            <div style="background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-gold);">
+                <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--accent-gold);">Integrity</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">Transparent business practices and a zero-tolerance policy for corruption define our corporate identity.</p>
+            </div>
+            <div style="background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md); border-left: 4px solid var(--accent-gold);">
+                <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--accent-gold);">Sustainability</h3>
+                <p style="color: var(--text-secondary); font-size: 0.95rem;">We champion environmental stewardship in every project, balancing energy needs with ecological responsibility.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- --- COMPREHENSIVE SERVICES --- -->
+
+    <!-- CONTACT PORTAL -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <span class="section-tag">Direct Corporate Access</span>
+                    <h2 class="section-title">Initiate Global Request</h2>
+                    <p class="section-subtitle" style="margin: 0 auto;">Connect with our technical or petroleum supply teams at any of our worldwide hubs.</p>
+                </div>
+
+                <form onsubmit="event.preventDefault(); alert('Request submitted successfully.');">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Corporate Email</label>
+                            <input type="email" placeholder="name@company.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Primary Hub Region</label>
+                            <select>
+                                <option>United States (USA)</option>
+                                <option>Netherlands</option>
+                                <option>United Kingdom</option>
+                          
+                                <option>Oman</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Inquiry Type</label>
+                            <select>
+                                <option>Crude & Petroleum Product Allocation</option>
+                                <option>EN590 </option>
+                                <option>JETA1 </option>
+                                  <option>ESPO </option>
+                                   <option> LNG/LPG</option>
+                                   <option> D2/D6</option>
+                                <option>General EPC Contracting</option>
+                            </select>
+                        </div>
+                        <div class="form-group full">
+                            <label>Scope of Work / Requirements</label>
+                            <textarea rows="4" placeholder="Detail your project requirements or allocation specs..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 2rem; padding: 1.2rem;">Submit Corporate Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        TRAFE <span>INC.</span>
+                    </div>
+                    <p>International Crude & Petroleum Product Supply and Drilling Services EPC Contractor.</p>
+                </div>
+                <div>
+                   
+                </div>
+                <div>
+                    <div class="footer-title">Divisions</div>
+                    <ul class="footer-links">
+                        <li><a href="whatwedo.html">Petroleum Allocations</a></li>
+                        <li><a href="whatwedo.html">Drilling Operations</a></li>
+                        <li><a href="whatwedo.html">Equipment Overhaul</a></li>
+                        <li><a href="whatwedo.html">Corporate Ethos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Trafe Inc. All Rights Reserved.</p>
+                <p>"Your problem is our challenge!"</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What We Do | Trafe Inc. – Fuel Supply, Drilling & Storage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- design system (consistent) --- */
+        :root {
+            --bg-dark: #070A11;
+            --bg-surface: #0E1422;
+            --bg-card: #151D30;
+            --accent-gold: #E5B849;
+            --accent-gold-hover: #f3cb67;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --border-highlight: rgba(229, 184, 73, 0.3);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-card: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-tag {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 650px;
+        }
+
+        /* header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(7, 10, 17, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-subtle);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span { color: var(--accent-gold); }
+
+        .logo-tag {
+            font-size: 0.65rem;
+            background: rgba(229, 184, 73, 0.15);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 2px 6px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.8rem 1.6rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--bg-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -5px rgba(229, 184, 73, 0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-subtle);
+            color: var(--text-primary);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-gold);
+            color: var(--accent-gold);
+        }
+
+        /* page hero */
+        .page-hero {
+            padding: 5rem 0 4rem 0;
+            background: linear-gradient(180deg, rgba(7,10,17,0.7) 0%, var(--bg-dark) 100%),
+                        url('./pexels-pixabay-257700-2048x1365.jpg') no-repeat center center/cover;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .page-hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .page-hero h1 span {
+            background: linear-gradient(90deg, #FFFFFF, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin-top: 1rem;
+        }
+
+        /* fuel supply section */
+        .fuel-supply {
+            padding: 5rem 0;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .fuel-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .fuel-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem 1.5rem;
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .fuel-list li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .fuel-list li::before {
+            content: "▹";
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .storage-badge {
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-md);
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .storage-badge strong {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+        }
+
+        /* drilling services */
+        .drilling-services {
+            padding: 5rem 0;
+            background-color: var(--bg-dark);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .drilling-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2.5rem;
+        }
+
+        .drill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .drill-card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-4px);
+        }
+
+        .drill-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .drill-card .highlight {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .drill-features {
+            list-style: none;
+            margin-top: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .drill-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+        }
+
+        .drill-features li::before {
+            content: "✓";
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        /* solutions / tank storage */
+        .solutions-section {
+            padding: 5rem 0;
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .solutions-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .solutions-highlight {
+            background: var(--bg-card);
+            border: 1px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .solutions-highlight .big-number {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            line-height: 1.2;
+        }
+
+        .tank-details {
+            margin-top: 1.5rem;
+            background: var(--bg-dark);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            border: 1px solid var(--border-subtle);
+        }
+
+        .tank-details p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* discipline list (wide) */
+        .discipline-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem 2rem;
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .discipline-grid li {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-secondary);
+        }
+
+        .discipline-grid li::before {
+            content: "◆";
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+        }
+
+        /* cta */
+        .cta-section {
+            padding: 4rem 0;
+            background-color: var(--bg-dark);
+            text-align: center;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .cta-section .btn {
+            margin-top: 1.5rem;
+        }
+
+        /* footer */
+        footer {
+            background-color: var(--bg-dark);
+            border-top: 1px solid var(--border-subtle);
+            padding: 5rem 0 2rem 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand p { margin-top: 1rem; max-width: 350px; }
+        .footer-title { color: var(--text-primary); font-weight: 700; margin-bottom: 1.25rem; }
+        .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+        .footer-links a:hover { color: var(--accent-gold); }
+        .footer-bottom {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 992px) {
+            .fuel-grid, .drilling-grid, .solutions-wrapper { grid-template-columns: 1fr; }
+            .page-hero h1 { font-size: 2.6rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .discipline-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .fuel-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                TRAFE <span>INC.</span>
+                <span class="logo-tag">Global</span>
+            </div>
+            <ul class="nav-links">
+                 <li><a href="index.html">Home </a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="whatwedo.html">What We Do</a></li>
+                <li><a href="Team.html">Leadership</a></li>
+                 
+                  <li><a href="Trackrecord.html">Track Record</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            </ul>
+            <button class="btn btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'});">Initiate Inquiry</button>
+        </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    
+
+    <!-- FUEL SUPPLY -->
+    <section class="fuel-supply" id="fuel">
+        <div class="container">
+            <div class="fuel-grid">
+                <div>
+                    <span class="section-tag">Bulk fuel & crude</span>
+                    <h2 class="section-title">Fuel Supply</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        Trafe, with our EPC background, have successfully established ourselves as a key Fuel Supply company to various regions of the world. We supply bulk fuel originating from <strong style="color: var(--text-primary);">America, Oman, Europe, Kazakhstan,</strong>.
+                    </p>
+                    </div>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.2rem; color: var(--accent-gold); margin-bottom: 0.5rem;">Products we supply</h3>
+                    <ul class="fuel-list">
+                        <li>Crude Oil</li>
+                        <li>EN590 10PPM</li>
+                        <li>Gasoil 50 PPM</li>
+                        <li>Gasoil 500 PPM</li>
+                        <li>Gasoline (all grades)</li>
+                        <li>A1 Jet Fuel</li>
+                        <li>D2</li>
+                        <li>LPG</li>
+                    </ul>
+                    <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-secondary);">
+                        <span style="color: var(--accent-gold);">✓</span> Direct allocations from primary sources &nbsp;·&nbsp; <span style="color: var(--accent-gold);">✓</span> Global logistics & delivery
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DRILLING SERVICE PARTNER -->
+    <section class="drilling-services" id="drilling">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <span class="section-tag">EPC Drilling Contractor</span>
+                <h2 class="section-title">Drilling Service Partner</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Tailor-made teams, full overhauls, spare parts & certifications — for onshore and offshore operations worldwide.</p>
+            </div>
+
+            <div class="drilling-grid">
+                <div class="drill-card">
+                    <h3>Complete Drilling Packages</h3>
+                    <p style="color: var(--text-secondary); margin: 0.5rem 0 1rem 0;">
+                        We provide tailor-made drilling teams, full overhaul, spare parts and certifications for your drilling equipment. Our staff is motivated, well-trained, certified and ready for any job.
+                    </p>
+                    <ul class="drill-features">
+                        <li>Full equipment overhaul & OEM spares</li>
+                        <li>Drilling certifications & compliance</li>
+                        <li>High-pressure & deepwater expertise</li>
+                        <li>24/7 on-site technical support</li>
+                    </ul>
+                </div>
+                <div class="drill-card">
+                    <h3>Beyond Drilling</h3>
+                    <p style="color: var(--text-secondary); margin: 0.5rem 0 1rem 0;">
+                        We offer the complete package of services, employees with proper training and necessary certificates. Trafe is also active in projects and product development — e.g. mobile video surveillance systems for offshore, shipping and construction.
+                    </p>
+                    <div style="margin-top: 1rem; background: var(--bg-dark); padding: 1rem; border-radius: var(--radius-sm); border-left: 3px solid var(--accent-gold);">
+                        <span class="highlight">“Your problem is our GOAL”</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUTIONS – TANK STORAGE OMAN -->
+    <section class="solutions-section" id="solutions">
+        <div class="container">
+            <div class="solutions-wrapper">
+                <div>
+                    <span class="section-tag">Strategic infrastructure</span>
+                    <h2 class="section-title">Tank Storage Oman</h2>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                        Trafe Group of Companies acquired in April 2022 a tank storage facility of <strong style="color: var(--text-primary);">9.000.000 BBL</strong> (almost 1.1 million MT) in the Port of Sohar, Sultanate of Oman.
+                    </p>
+                    <p style="color: var(--text-secondary);">
+                        The tanks (CTTT-C61, CTTT-C99, CTTT-22 and CTTT-90) are ready for EN590, D2, D6 and gasoline. Adjustments for A1 Jet Fuel storage are being completed.
+                    </p>
+                    <div class="tank-details">
+                        <p><strong style="color: var(--accent-gold);">⛴️ Berth & seaway:</strong> depth -19m at entrance, -16m at berth — capable of handling large tankers.</p>
+                    </div>
+                </div>
+                <div class="solutions-highlight">
+                    <div class="big-number">100M BBL</div>
+                    <p style="color: var(--text-secondary); margin: 0.5rem 0 1rem 0;">current storage capacity</p>
+                    <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+                        <span style="background: var(--bg-dark); padding: 0.3rem 1rem; border-radius: 30px; border: 1px solid var(--border-subtle);">GLOBALLY</span>
+                    </div>
+                    <p style="margin-top: 1.5rem; font-size: 0.95rem; color: var(--text-secondary);">
+                        <span style="color: var(--accent-gold);">✓</span> Crude & refined products<br>
+                        <span style="color: var(--accent-gold);">✓</span> Direct terminal access
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL DISCIPLINE LIST (expanded) -->
+    <section style="padding: 5rem 0; background-color: var(--bg-dark); border-bottom: 1px solid var(--border-subtle);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 2.5rem;">
+                <span class="section-tag">Complete technical capabilities</span>
+                <h2 class="section-title">Disciplines & Services</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">High-skilled specialists with proper training and certifications — ready for any job.</p>
+            </div>
+            <ul class="discipline-grid">
+                <li>Managing & hands-on drilling rig activities (Drill ships, Semi-submersible & Jack-up)</li>
+                <li>Engineering</li>
+                <li>Operating</li>
+                <li>Maintenance</li>
+                <li>Overhauls</li>
+                <li>Factory Acceptance Test Witnessing</li>
+                <li>Quality assurance as third-party witness</li>
+                <li>Preservation of drilling rigs prior to stacking</li>
+                <li>Returning drilling rigs back into operation</li>
+                <li>Equipment repairs</li>
+                <li>Inspections</li>
+                <li>Engineering, Design and Construction Services</li>
+                <li>Technical Manpower Services</li>
+                <li>Security Services for Oil and Gas Assets</li>
+                <li>Sourcing and supplying parts and components (new and used)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">TRAFE <span>INC.</span></div>
+                    <p>International Crude & Petroleum Product Supply and Drilling Services EPC Contractor.</p>
+                </div>
+                <div></div>
+                <div>
+                    <div class="footer-title">Divisions</div>
+                    <ul class="footer-links">
+                        <li><a href="whatwedo.html">Petroleum Allocations</a></li>
+                        <li><a href="whatwedo.html">Drilling Operations</a></li>
+                        <li><a href="whatwedo.html">Equipment Overhaul</a></li>
+                        <li><a href="whatwedo.html">Corporate Ethos</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Trafe Inc. All Rights Reserved.</p>
+                <p>"Your problem is our challenge!"</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
