@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -453,16 +452,14 @@
         <div class="container nav-container">
             <div class="logo">
                 TRAFE <span>INC.</span>
-               
             </div>
             <ul class="nav-links">
-                 <li><a href="index.html">Home </a></li>
+                <li><a href="index.html">Home </a></li>
                 <li><a href="about.html">About Us</a></li>
                 <li><a href="whatwedo.html">What We Do</a></li>
                 <li><a href="Team.html">Leadership</a></li>
-                 
-                  <li><a href="Trackrecord.html">Track Record</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="Trackrecord.html">Track Record</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
             <button class="btn btn-primary" onclick="window.location.href='contact.html';">Initiate Inquiry</button>
         </div>
@@ -497,16 +494,11 @@
                     </div>
 
                     <div class="info-item">
-                       
-                        </div>
-                    </div>
-
-                    <div class="info-item">
                         <div class="icon">✉️</div>
                         <div>
                             <h4>Email</h4>
                             <p><a href="mailto:info@trafeinc.com">info@trafeinc.com</a></p>
-                               <p><a href="mailto:info@trafeinc.com">sales@trafeinc.com</a></p>
+                            <p><a href="mailto:sales@trafeinc.com">sales@trafeinc.com</a></p>
                         </div>
                     </div>
 
@@ -517,71 +509,71 @@
                             <p>09:00 – 17:00 EST<br>Monday – Friday</p>
                         </div>
                     </div>
-
-                    <div class="info-item">
-                   
-                        <div>
-                          
-                        </div>
-                    </div>
                 </div>
 
-                <!-- RIGHT: Contact Form -->
+                <!-- RIGHT: Contact Form (Configured with Formspree) -->
                 <div class="contact-form-wrapper">
                     <h3>Submit Your Inquiry</h3>
                     <p>Fill out the form below and our team will respond within 24 hours.</p>
 
-                    <form onsubmit="event.preventDefault(); alert('Thank you for your inquiry. A Trafe Inc. representative will contact you within 24 hours.');">
+                    <form action="https://formspree.io/f/xyegpvzg" method="POST">
+                        
+                        <!-- Custom Email Subject Header in Formspree Notification -->
+                        <input type="hidden" name="_subject" value="New Inquiry from Trafe Inc. Contact Form">
+
                         <div class="form-grid">
                             <div class="form-group">
                                 <label>Full Name <span class="required">*</span></label>
-                                <input type="text" placeholder="John Doe" required>
+                                <input type="text" name="name" placeholder="John Doe" required>
                             </div>
+
                             <div class="form-group">
                                 <label>Corporate Email <span class="required">*</span></label>
-                                <input type="email" placeholder="name@company.com" required>
+                                <input type="email" name="email" placeholder="name@company.com" required>
                             </div>
-                          
+
                             <div class="form-group">
                                 <label>Company Name</label>
-                                <input type="text" placeholder="Your Company">
+                                <input type="text" name="company" placeholder="Your Company">
                             </div>
+
                             <div class="form-group">
                                 <label>Primary Region <span class="required">*</span></label>
-                                <select required>
+                                <select name="region" required>
                                     <option value="">Select Region</option>
-                                    <option>United States (USA)</option>
-                                    <option>Netherlands</option>
-                                    <option>United Kingdom</option>
-                                   
-                                    <option>Oman</option>
-                                  
-                                    <option>Other</option>
+                                    <option value="United States (USA)">United States (USA)</option>
+                                    <option value="Netherlands">Netherlands</option>
+                                    <option value="United Kingdom">United Kingdom</option>
+                                    <option value="Oman">Oman</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
+
                             <div class="form-group">
                                 <label>Inquiry Type <span class="required">*</span></label>
-                                <select required>
+                                <select name="inquiry_type" required>
                                     <option value="">Select Inquiry Type</option>
-                                    <option>Crude & Petroleum Product Allocation</option>
-                                    <option>EN590 / Diesel Supply</option>
-                                    <option>Jet A1 / Aviation Fuel</option>
-                                    <option>ESPO Crude</option>
-                                    <option>LNG / LPG Supply</option>
-                                    <option>D2 / D6 Diesel</option>
-                                    <option>Drilling Operations & EPC Contracting</option>
-                                    <option>Equipment Overhaul & Maintenance</option>
-                                    <option>Technical Manpower Services</option>
-                                    <option>Security Services</option>
-                                    <option>Well Testing & Early Production</option>
-                                    <option>General Inquiry</option>
+                                    <option value="Crude & Petroleum Product Allocation">Crude & Petroleum Product Allocation</option>
+                                    <option value="EN590 / Diesel Supply">EN590 / Diesel Supply</option>
+                                    <option value="Jet A1 / Aviation Fuel">Jet A1 / Aviation Fuel</option>
+                                    <option value="ESPO Crude">ESPO Crude</option>
+                                    <option value="LNG / LPG Supply">LNG / LPG Supply</option>
+                                    <option value="D2 / D6 Diesel">D2 / D6 Diesel</option>
+                                    <option value="Drilling Operations & EPC Contracting">Drilling Operations & EPC Contracting</option>
+                                    <option value="Equipment Overhaul & Maintenance">Equipment Overhaul & Maintenance</option>
+                                    <option value="Technical Manpower Services">Technical Manpower Services</option>
+                                    <option value="Security Services">Security Services</option>
+                                    <option value="Well Testing & Early Production">Well Testing & Early Production</option>
+                                    <option value="General Inquiry">General Inquiry</option>
                                 </select>
                             </div>
+
                             <div class="form-group full">
                                 <label>Scope of Work / Requirements <span class="required">*</span></label>
-                                <textarea rows="5" placeholder="Please provide details about your project, requirements, or specifications..." required></textarea>
+                                <textarea name="message" rows="5" placeholder="Please provide details about your project, requirements, or specifications..." required></textarea>
                             </div>
                         </div>
+
                         <button type="submit" class="submit-btn">Submit Corporate Request</button>
                     </form>
                 </div>
@@ -615,15 +607,11 @@
                     <h4>United Kingdom</h4>
                     <p>London<br>North Sea Operations</p>
                 </div>
-             
-                
                 <div class="office-card">
                     <div class="flag">🇴🇲</div>
                     <h4>Oman</h4>
                     <p>Muscat<br>Onshore Drilling Projects</p>
                 </div>
-               
-             
             </div>
         </div>
     </section>
@@ -665,4 +653,4 @@
     </footer>
 
 </body>
-</html>s
+</html>
